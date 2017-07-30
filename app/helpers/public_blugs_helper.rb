@@ -1,0 +1,2 @@
+module PublicBlugsHelper
+end

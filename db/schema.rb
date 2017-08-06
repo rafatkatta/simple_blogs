@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170730085745) do
+ActiveRecord::Schema.define(version: 20170806065702) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -68,7 +68,20 @@ ActiveRecord::Schema.define(version: 20170730085745) do
     t.integer "blog_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "publiched_at"
     t.index ["blog_id"], name: "index_masseges_on_blog_id"
+  end
+
+  create_table "user_profiles", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.date "birthday"
+    t.string "birth_country"
+    t.string "birth_city"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -91,8 +104,12 @@ ActiveRecord::Schema.define(version: 20170730085745) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.boolean "admin", default: 0,  null: false
+    t.datetime "deactivate_at"  
+    t.index ["confirmation_token"], name: "index_users_on_users_and_confirmation_token", unique: true
+    t.index ["email"], name: "index_users_on_users_and_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_users_and_reset_password_token", unique: true
+    t.index ["unlock_token"], name: "index_users_on_users_and_unlock_token", unique: true
   end
 
 end

@@ -60,3 +60,6 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'active_skin'
 # HAML
 gem 'haml'
+# Angular
+#gem 'angular-gem', '~> 1.3', '>= 1.3.8'
+gem 'angularjs-rails'

@@ -26,12 +26,14 @@ ActiveAdmin.register User do
       f.input :email
       f.input :password
       f.input :password_confirmation
-      f.inputs 'UserProfile' do 
-          f.input :firstname 
-          f.input :lastname 
-          f.input :birthday
-          f.input :birth_city
-          f.input :birth_country 
+      f.inputs do 
+          f.has_many :user_profile do |p|
+              p.input :firstname 
+              p.input :lastname 
+              p.input :birthday, as: :datepicker
+              p.input :birth_city
+              p.country_select :birth_country 
+           end   
       end  
     end
     f.actions

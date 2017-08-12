@@ -58,6 +58,8 @@ gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
 # active_skin fordesign
 gem 'active_skin'
+# country_selector
+gem 'country_select'
 # HAML
 gem 'haml'
 # Angular

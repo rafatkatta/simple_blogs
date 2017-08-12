@@ -1,5 +1,10 @@
 ActiveAdmin.register User do
-  permit_params :email, :password, :password_confirmation
+  permit_params :email, :password, :password_confirmation, 
+  user_profile_attributes: [:id,  :firstname, :lastname, 
+                           :birthday, :birth_country,  :birth_city]
+   
+  scope_to :current_user, unless: proc{ current_user.admin? } 
+  #menu if: proc{ current_user.admin? }   
 
   index do
     selectable_column
@@ -21,6 +26,13 @@ ActiveAdmin.register User do
       f.input :email
       f.input :password
       f.input :password_confirmation
+      f.inputs 'UserProfile' do 
+          f.input :firstname 
+          f.input :lastname 
+          f.input :birthday
+          f.input :birth_city
+          f.input :birth_country 
+      end  
     end
     f.actions
   end

@@ -66,6 +66,7 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs do
+      f.input :email if current_user.is_admin?  
       f.input :password
       f.input :password_confirmation
     end

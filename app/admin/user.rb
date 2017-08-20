@@ -4,16 +4,8 @@ ActiveAdmin.register User do
                            :birthday, :birth_country,  :birth_city]
     
     menu label: proc{I18n.t "#{current_user.is_admin? ? 'users':'password'}"}
- 
    
   controller do
-    disallowed = []
-    disallowed << :show if proc{current_user.is_admin?}  
-    disallowed << :edit unless proc{current_user.is_admin?}  
-    disallowed << :new if proc{current_user.is_admin?}
-    disallowed << :destroy if proc{current_user.is_admin?}
-    actions :all, except: disallowed
-    Rails.logger.debug disallowed
     def scoped_collection
       if current_user.is_admin?
         User.all
@@ -61,7 +53,9 @@ ActiveAdmin.register User do
         column :current_sign_in_at
         column :sign_in_count
         column :created_at
-        actions
+        column ' ' do |user|
+            link_to "Edit", edit_admin_user_path(user.id) 
+        end    
     end    
   end
 

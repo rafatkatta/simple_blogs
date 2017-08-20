@@ -58,6 +58,8 @@ gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
 # active_skin fordesign
 gem 'active_skin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+gem 'activeadmin_addons'
 # country_selector
 gem 'country_select'
 # HAML

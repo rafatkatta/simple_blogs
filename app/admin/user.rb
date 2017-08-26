@@ -2,9 +2,11 @@ ActiveAdmin.register User do
   permit_params :email, :password, :password_confirmation, 
   user_profile_attributes: [:id,  :firstname, :lastname, 
                            :birthday, :birth_country,  :birth_city]
+  includes :blog,  :user_profile
     
-    menu label: proc{I18n.t "#{current_user.is_admin? ? 'users':'password'}"}
-   
+  menu label: proc{I18n.t "#{current_user.is_admin? ? 'users':'password'}"}
+  
+    
   controller do
     def scoped_collection
       if current_user.is_admin?

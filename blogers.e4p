@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric project file for project blogers -->
-<!-- Saved: 2017-08-20, 20:24:17 -->
+<!-- Saved: 2017-08-28, 21:48:57 -->
 <!-- Copyright (C) 2017 rafatkatta, rafatkatta@gsibc.net -->
 <Project version="5.1">
   <Language></Language>
@@ -53,6 +53,24 @@
     <Source>app/models/user.rb</Source>
     <Source>app/admin/user.rb</Source>
     <Source>db/migrate/20170716070910_devise_create_users.rb</Source>
+    <Source>app/models/blog.rb</Source>
+    <Source>app/models/category.rb</Source>
+    <Source>app/models/comment.rb</Source>
+    <Source>app/models/commentator.rb</Source>
+    <Source>app/models/massege.rb</Source>
+    <Source>app/models/user_profile.rb</Source>
+    <Source>app/admin/massege.rb</Source>
+    <Source>app/admin/category.rb</Source>
+    <Source>app/admin/blog.rb</Source>
+    <Source>app/admin/user_profile.rb</Source>
+    <Source>db/migrate/20170716073321_create_categories.rb</Source>
+    <Source>db/migrate/20170716092424_create_blogs.rb</Source>
+    <Source>db/migrate/20170730085650_create_masseges.rb</Source>
+    <Source>db/migrate/20170730085718_create_commentators.rb</Source>
+    <Source>db/migrate/20170730085745_create_comments.rb</Source>
+    <Source>db/migrate/20170806062324_add_admin_and_deactivated_at_to_users.rb</Source>
+    <Source>db/migrate/20170806064023_create_user_profiles.rb</Source>
+    <Source>db/migrate/20170806065702_add_publiched_at_to_masseges.rb</Source>
   </Sources>
   <Forms>
     <Form>public/422.html</Form>

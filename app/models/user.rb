@@ -3,7 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, 
          :confirmable, :lockable, :timeoutable, :registerable
   # dvise + omniauth  :omniauthable
-  has_one :blog
+  has_many :blogs
   has_one :user_profile
   before_save {admin = true if User.count == 0}
   

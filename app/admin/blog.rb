@@ -30,5 +30,25 @@ ActiveAdmin.register Blog do
     end    
     actions
    end
-    
+   
+   show title: :name do
+    attributes_table do
+      if current_user.is_admin?   
+        row :id
+        row :user      
+      end
+      row :name
+      row :description
+      row :category do |blog|
+          if current_user.is_admin?
+            link_to blog.category.name, admin_category_path(blog.category.id)  
+          else    
+            blog.category.name
+          end
+      end    
+      row :created_at
+      row :updated_at
+    end
+    #active_admin_comments
+   end
 end

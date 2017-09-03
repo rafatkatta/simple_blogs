@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'home/index'
+
   get 'public_blugs/home'
 
   get 'public_blugs/index'

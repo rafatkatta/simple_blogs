@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric project file for project blogers -->
-<!-- Saved: 2017-08-28, 21:48:57 -->
+<!-- Saved: 2017-09-03, 21:57:14 -->
 <!-- Copyright (C) 2017 rafatkatta, rafatkatta@gsibc.net -->
 <Project version="5.1">
   <Language></Language>
@@ -71,6 +71,11 @@
     <Source>db/migrate/20170806062324_add_admin_and_deactivated_at_to_users.rb</Source>
     <Source>db/migrate/20170806064023_create_user_profiles.rb</Source>
     <Source>db/migrate/20170806065702_add_publiched_at_to_masseges.rb</Source>
+    <Source>app/controllers/home_controller.rb</Source>
+    <Source>app/views/home/index.html.haml</Source>
+    <Source>app/views/layouts/mailer.text.haml</Source>
+    <Source>app/views/layouts/application.html.haml</Source>
+    <Source>app/views/layouts/mailer.html.haml</Source>
   </Sources>
   <Forms>
     <Form>public/422.html</Form>

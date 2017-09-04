@@ -1,0 +1,8 @@
+.category.list
+  %ul{"ng-controller" => "CategoryCtrl as ctrl"}
+    %li{"ng-repeat" => "category in categories"}
+      %a{"ng-click" => "callBlogs(category.id)"} {{category.name}}
+.blog.list
+  %ul{"ng-controller" => "CategoryCtrl as ctrl"}
+    %li{"ng-repeat" => "blog in blogs"}
+      %a{"ng-click" => "callBlog(blog.id)"} {{blog.name}}      

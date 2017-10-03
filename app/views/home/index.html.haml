@@ -34,5 +34,18 @@
         {{message.publiched_at}}
     %tr
       %td{:colspan => "3"}  
-        %span{"ng-bind-html" => "$sce.trustAsHtml(message.content)"}  
+        %span{"ng-bind-html" => "$sce.trustAsHtml(message.content)"}
+    %tr
+      %td{:colspan => "3"}
+        = form_tag '/add_comment', remote: true do
+          = hidden_field_tag "{{message.id}}"
+          = label_tag 'Firstname'
+          = text_field_tag 'firstname' 
+          = label_tag 'Lastname'
+          = text_field_tag 'lastname'
+          = label_tag 'E Mail'
+          = email_field_tag 'firstname'
+          = label_tag 'Comment'
+          = text_area_tag 'comment'          
+        
   

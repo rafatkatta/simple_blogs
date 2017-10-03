@@ -1,12 +1,12 @@
 !!!
-%html
+%html{"ng-app" => "blogers"}
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title Blogers
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  %body{"ng-app" => "blogers"}
+  %body{"ng-controller" => "MainCtrl as Main"}
     .wrapper
       .header
       .site_title

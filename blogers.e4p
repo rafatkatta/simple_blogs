@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-5.1.dtd">
 <!-- eric project file for project blogers -->
-<!-- Saved: 2017-09-03, 21:57:14 -->
+<!-- Saved: 2017-09-04, 18:22:01 -->
 <!-- Copyright (C) 2017 rafatkatta, rafatkatta@gsibc.net -->
 <Project version="5.1">
   <Language></Language>
@@ -76,6 +76,14 @@
     <Source>app/views/layouts/mailer.text.haml</Source>
     <Source>app/views/layouts/application.html.haml</Source>
     <Source>app/views/layouts/mailer.html.haml</Source>
+    <Source>README.md</Source>
+    <Source>config.ru</Source>
+    <Source>Gemfile</Source>
+    <Source>Gemfile.lock</Source>
+    <Source>package.json</Source>
+    <Source>Rakefile</Source>
+    <Source>app/assets/javascripts/home.coffee</Source>
+    <Source>app/assets/javascripts/active_admin.js.coffee</Source>
   </Sources>
   <Forms>
     <Form>public/422.html</Form>

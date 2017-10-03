@@ -1,8 +1,38 @@
-.category.list
-  %ul{"ng-controller" => "CategoryCtrl as ctrl"}
-    %li{"ng-repeat" => "category in categories"}
+.category.list{"ng-controller" => "CategoryCtrl as Category"}
+  %ul{"ng-show"=> "categories.length"}
+    %li{ "ng-model" => "blog_list", "ng-repeat" => "category in categories"}
       %a{"ng-click" => "callBlogs(category.id)"} {{category.name}}
-.blog.list
-  %ul{"ng-controller" => "CategoryCtrl as ctrl"}
-    %li{"ng-repeat" => "blog in blogs"}
-      %a{"ng-click" => "callBlog(blog.id)"} {{blog.name}}      
+.blog.list{"ng-controller" => "BlogCtrl as Blog"}
+  %ul{"ng-show"=> "blogs.length"}
+    %li{"ng-model" => "blog_data", "ng-repeat" => "blog in blogs"}
+      %a{"ng-click" => "callBlog(blog.id)"} {{blog.name}}     
+.blog.data
+  %table
+    %tr
+      %td
+        {{blog.name}}
+      %td  
+        {{blog.description}}
+      %td  
+        %span{"ng-bind" => "blog.created_at | date:'MM/dd/yyyy'"}
+      %td  
+        {{bloger}}
+  %table{"ng-show"=> "messages.length", "ng-repeat" => "message in messages"}
+    %tr
+      %th
+        Title
+      %th
+        Last update
+      %th
+        Publiched at
+    %tr
+      %td
+        {{message.title}}
+      %td
+        {{message.updated_at}}
+      %td
+        {{message.publiched_at}}
+    %tr
+      %td{:colspan => "3"}  
+        %span{"ng-bind-html" => "$sce.trustAsHtml(message.content)"}  
+  

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get '/home/index'
   get '/home/categories'    
   get '/home/blogs/:id',  to: 'home#blogs'  
+  get '/home/blog/:id',  to: 'home#blog'    
   devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   

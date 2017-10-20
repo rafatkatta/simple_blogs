@@ -10,5 +10,9 @@
     .wrapper
       .header
       .site_title
+      %nav.navbar.navbar-inverse.bg-light
+        .container
+          %a.nav-item.nav-link{class: 'btn btn-info', href: new_user_registration_path} Sign up
+          %a.nav-item.nav-link{class: 'btn btn-info', href: user_session_path} Login
       = yield
       .footer

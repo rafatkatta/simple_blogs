@@ -67,3 +67,7 @@ gem 'haml'
 # Angular
 #gem 'angular-gem', '~> 1.3', '>= 1.3.8'
 gem 'angularjs-rails'
+# gem 'bootstrap'
+gem 'bootstrap', '~> 4.0.0.beta'
+# gem 'jquery-rails'
+gem 'jquery-rails'

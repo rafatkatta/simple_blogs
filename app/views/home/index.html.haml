@@ -1,51 +1,57 @@
-.category.list{"ng-controller" => "CategoryCtrl as Category"}
-  %ul{"ng-show"=> "categories.length"}
-    %li{ "ng-model" => "blog_list", "ng-repeat" => "category in categories"}
-      %a{"ng-click" => "callBlogs(category.id)"} {{category.name}}
-.blog.list{"ng-controller" => "BlogCtrl as Blog"}
-  %ul{"ng-show"=> "blogs.length"}
-    %li{"ng-model" => "blog_data", "ng-repeat" => "blog in blogs"}
-      %a{"ng-click" => "callBlog(blog.id)"} {{blog.name}}     
-.blog.data
-  %table
-    %tr
-      %td
-        {{blog.name}}
-      %td  
-        {{blog.description}}
-      %td  
-        %span{"ng-bind" => "blog.created_at | date:'MM/dd/yyyy'"}
-      %td  
-        {{bloger}}
-  %table{"ng-show"=> "messages.length", "ng-repeat" => "message in messages"}
-    %tr
-      %th
-        Title
-      %th
-        Last update
-      %th
-        Publiched at
-    %tr
-      %td
-        {{message.title}}
-      %td
-        {{message.updated_at}}
-      %td
-        {{message.publiched_at}}
-    %tr
-      %td{:colspan => "3"}  
-        %span{"ng-bind-html" => "$sce.trustAsHtml(message.content)"}
-    %tr
-      %td{:colspan => "3"}
-        = form_tag '/add_comment', remote: true do
-          = hidden_field_tag "{{message.id}}"
-          = label_tag 'Firstname'
-          = text_field_tag 'firstname' 
-          = label_tag 'Lastname'
-          = text_field_tag 'lastname'
-          = label_tag 'E Mail'
-          = email_field_tag 'firstname'
-          = label_tag 'Comment'
-          = text_area_tag 'comment'          
-        
-  
+.row
+  .col-sm-1
+    .category.list{"ng-controller" => "CategoryCtrl as Category"}
+      %ul{class: 'list-group', "ng-show"=> "categories.length"}
+        %li{ class: 'list-group-item', "ng-model" => "blog_list", "ng-repeat" => "category in categories"}
+          %a{"ng-click" => "callBlogs(category.id)"} {{category.name}}
+  .col-sm-2  
+    .blog.list{"ng-controller" => "BlogCtrl as Blog"}
+      %ul{class: 'list-group', "ng-show"=> "blogs.length"}
+        %li{class: 'list-group-item', "ng-model" => "blog_data", "ng-repeat" => "blog in blogs"}
+          %a{"ng-click" => "callBlog(blog.id)"} {{blog.name}} 
+  .col-sm-9
+    .blog.data
+      %table
+        %tr
+          %td
+            {{blog.name}}
+          %td  
+            {{blog.description}}
+          %td  
+            %span{"ng-bind" => "blog.created_at | date:'MM/dd/yyyy HH:mm'"}
+          %td  
+            {{bloger}}
+      %table{"ng-show"=> "messages.length", "ng-repeat" => "message in messages"}
+        %tr
+          %th
+            Title
+          %th
+            Last update
+          %th
+            Publiched at
+        %tr
+          %td
+            {{message.title}}
+          %td
+            {{message.updated_at | date:'MM/dd/yyyy HH:mm'}}
+          %td
+            {{message.publiched_at | date:'MM/dd/yyyy HH:mm'}}
+        %tr
+          %td{:colspan => "3"}  
+            %span{"ng-bind-html" => "$sce.trustAsHtml(message.content)"}
+        %tr
+          %td{:colspan => "3"}
+            = form_tag '/add_comment', remote: true do
+              .form-group    
+                = hidden_field_tag "{{message.id}}"
+                = label_tag 'Firstname'
+                = text_field_tag 'firstname', nil, class: 'form-control'
+                = label_tag 'Lastname'
+                = text_field_tag 'lastname', nil, class: 'form-control'
+                = label_tag 'E Mail'
+                = email_field_tag 'firstname', nil, class: 'form-control'
+                = label_tag 'Comment'
+                = text_area_tag 'comment', nil, class: 'form-control'
+                = submit_tag nil, class: 'btn btn-primary'          
+            
+

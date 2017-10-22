@@ -21,6 +21,7 @@ class HomeController < ApplicationController
   end 
 
   def add_comment
+    byebug  
     @commentator = Commentator.where("firstname LIKE '%?%' OR lastname LIKE '%?%' AND email = '?'", 
                                    params[firstname], params[lastname], params[email])
     if comentanor.blank?

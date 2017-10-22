@@ -41,17 +41,27 @@
             %span{"ng-bind-html" => "$sce.trustAsHtml(message.content)"}
         %tr
           %td{:colspan => "3"}
-            = form_tag '/add_comment', remote: true do
+            = form_tag home_add_comment_path, remote: true do
               .form-group    
-                = hidden_field_tag "{{message.id}}"
+                = hidden_field_tag 'message_id',"{{message.id}}"
                 = label_tag 'Firstname'
-                = text_field_tag 'firstname', nil, class: 'form-control'
+                = text_field_tag 'firstname', nil, {class: 'form-control'}
                 = label_tag 'Lastname'
-                = text_field_tag 'lastname', nil, class: 'form-control'
+                = text_field_tag 'lastname', nil, {class: 'form-control'}
                 = label_tag 'E Mail'
-                = email_field_tag 'firstname', nil, class: 'form-control'
+                = email_field_tag 'email', nil, {class: 'form-control'}
                 = label_tag 'Comment'
-                = text_area_tag 'comment', nil, class: 'form-control'
-                = submit_tag nil, class: 'btn btn-primary'          
+                = text_area_tag 'comment', nil, {class: 'form-control'}
+                = submit_tag 'Submit', {class: 'btn btn-primary'}  
+        %tr
+          %td  
+            %table{"ng-show"=> "comments.length", "ng-repeat" => "comment in comments"}
+              %tr
+                %td
+                  {{comment.commentator_name}}
+                %td 
+                  {{comment.updated_at  | date:'MM/dd/yyyy HH:mm'}}
+                %td
+                  {{comment.content}}          
             
 

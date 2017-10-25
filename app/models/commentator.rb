@@ -2,6 +2,6 @@ class Commentator < ApplicationRecord
     has_many :comments
     
     def name
-        "#{firasname} #{lastname}"
+        "#{firstname} #{lastname}"
     end
 end

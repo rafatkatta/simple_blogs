@@ -13,12 +13,12 @@ app.controller 'MainCtrl', ['$scope','$http','$sce',($scope, $http,$sce) ->
   
   $scope.callBlog = (blog_id) ->
     $http.get("/home/blog/" + blog_id + '.json').then((response) ->
-      $scope.blog= response.data['blog']
-      $scope.bloger= response.data['bloger']
-      $scope.messages = response.data['messages']
-      $scope.$sce = $sce
+      $scope.blog= response.data.blog
+      $scope.bloger= response.data.bloger
+      $scope.messages = response.data.messages
+      $scope.$sce = $sce     
       return)       
-      
+   
   return]
 app.controller 'CategoryCtrl', ['$scope','$http',($scope, $http) ->
   $http.get('/home/categories.json').then((response) ->
@@ -27,7 +27,30 @@ app.controller 'CategoryCtrl', ['$scope','$http',($scope, $http) ->
   
   return]
 app.controller 'BlogCtrl', ['$scope','$http',($scope, $http) ->
-
-  
+ 
   return]
+
+app.controller 'FormCtrl', ['$scope','$http',($scope, $http) ->
+  $scope.addComment = ->
+    $.post('/home/add_comment.json', 
+             message_id: $scope.message.id  
+             firstname: $scope.commentator.firstname
+             lastname: $scope.commentator.lastname
+             email: $scope.commentator.email
+             comment: $scope.comment.content,
+            dataType: 'json' 
+            ).done (new_comment) ->
+             $scope.message.comments.push new_comment
+             $scope.showOverlay = false;
+             $scope.$apply ->
+               $scope.message.comments.update
+               return
+             console.log $scope.message.comments 
+             return
+        
+    return
+    $scope.form.setPristine 
+    $scope.form.setUntouched    
+    
+  return]  
 

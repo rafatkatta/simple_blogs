@@ -1,14 +1,14 @@
 .row
   .col-sm-1
-    .category.list{"ng-controller" => "CategoryCtrl as Category"}
-      %ul{class: 'list-group', "ng-show"=> "categories.length"}
-        %li{ class: 'list-group-item', "ng-model" => "blog_list", "ng-repeat" => "category in categories"}
-          %a{"ng-click" => "callBlogs(category.id)"} {{category.name}}
+    .category.list{'ng-controller': "CategoryCtrl as Category"}
+      %ul{class: 'list-group', 'ng-show': "categories.length"}
+        %li{ class: 'list-group-item', 'ng-model': "blog_list", 'ng-repeat': "category in categories"}
+          %a{'ng-click': "callBlogs(category.id)"} {{category.name}}
   .col-sm-2  
-    .blog.list{"ng-controller" => "BlogCtrl as Blog"}
-      %ul{class: 'list-group', "ng-show"=> "blogs.length"}
-        %li{class: 'list-group-item', "ng-model" => "blog_data", "ng-repeat" => "blog in blogs"}
-          %a{"ng-click" => "callBlog(blog.id)"} {{blog.name}} 
+    .blog.list{'ng-controller': "BlogCtrl as Blog"}
+      %ul{class: 'list-group', 'ng-show': "blogs.length"}
+        %li{class: 'list-group-item', 'ng-model': "blog_data", 'ng-repeat': "blog in blogs"}
+          %a{'ng-click': "callBlog(blog.id)"} {{blog.name}} 
   .col-sm-9
     .blog.data
       %table
@@ -18,10 +18,10 @@
           %td  
             {{blog.description}}
           %td  
-            %span{"ng-bind" => "blog.created_at | date:'MM/dd/yyyy HH:mm'"}
+            %span{'ng-bind': "blog.created_at | date:'MM/dd/yyyy HH:mm'"}
           %td  
             {{bloger}}
-      %table{"ng-show"=> "messages.length", "ng-repeat" => "message in messages"}
+      %table{id: "message_{{message.id}}" ,'ng-show': "messages.length", 'ng-repeat': "message in messages"}
         %tr
           %th
             Title
@@ -37,31 +37,33 @@
           %td
             {{message.publiched_at | date:'MM/dd/yyyy HH:mm'}}
         %tr
-          %td{:colspan => "3"}  
-            %span{"ng-bind-html" => "$sce.trustAsHtml(message.content)"}
+          %td{colspan: "3"}
+            %b comment:
+            %span{'ng-bind-html': "$sce.trustAsHtml(message.content)"}
         %tr
-          %td{:colspan => "3"}
-            = form_tag home_add_comment_path, remote: true do
+          %td{colspan: "3"}
+            %form{'ng-submit': "addComment()", 'ng-controller': "FormCtrl"}
               .form-group    
-                = hidden_field_tag 'message_id',"{{message.id}}"
+                = hidden_field_tag :message_id,"{{message.id}}",{'ng-model': "message.id"}
                 = label_tag 'Firstname'
-                = text_field_tag 'firstname', nil, {class: 'form-control'}
+                = text_field_tag :firstname, nil, {class: 'form-control', 'ng-model': "commentator.firstname", required: true}
                 = label_tag 'Lastname'
-                = text_field_tag 'lastname', nil, {class: 'form-control'}
+                = text_field_tag :lastname, nil, {class: 'form-control', 'ng-model': "commentator.lastname", required: true}
                 = label_tag 'E Mail'
-                = email_field_tag 'email', nil, {class: 'form-control'}
+                = email_field_tag :email, nil, {class: 'form-control', 'ng-model': "commentator.email", required: true}
                 = label_tag 'Comment'
-                = text_area_tag 'comment', nil, {class: 'form-control'}
+                = text_area_tag :content, nil, {class: 'form-control', 'ng-model': "comment.content", required: true}
                 = submit_tag 'Submit', {class: 'btn btn-primary'}  
         %tr
-          %td  
-            %table{"ng-show"=> "comments.length", "ng-repeat" => "comment in comments"}
+          %td
+            %table{id: "comment_{{comment.id}}", 'ng-show': "message.comments.length", 'ng-repeat': "comment in message.comments"}
               %tr
                 %td
-                  {{comment.commentator_name}}
+                  {{comment.commentator.name}}
                 %td 
                   {{comment.updated_at  | date:'MM/dd/yyyy HH:mm'}}
-                %td
+              %tr    
+                %td{colspan: "2"}
                   {{comment.content}}          
             
 
